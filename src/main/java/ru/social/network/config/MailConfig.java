@@ -1,5 +1,7 @@
 package ru.social.network.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,7 +10,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 @Configuration
 public class MailConfig {
-
+    private static final Logger LOG = LoggerFactory.getLogger(MailConfig.class);
     private final static String MAIL_TRANSPORT_PROTOCOL = "mail.transport.protocol";
     private final static String MAIL_DEBUG= "mail.debug";
 
@@ -33,7 +35,7 @@ public class MailConfig {
     @Bean
     public JavaMailSender getMailSender() {
         var mailSender = new JavaMailSenderImpl();
-
+        LOG.info("JavaMailSender: host={} port={} username={} password={}", host, port, username, password);
         mailSender.setHost(host);
         mailSender.setPort(port);
         mailSender.setUsername(username);
