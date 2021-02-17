@@ -13,7 +13,7 @@ public class MailSenderServiceImpl implements MailSenderService {
     private final JavaMailSender mailSender;
     private final String username;
 
-    public MailSenderServiceImpl(JavaMailSender mailSender, @Value("${spring.mail.username}") String username) {
+    public MailSenderServiceImpl(JavaMailSender mailSender, @Value("${mail.username}") String username) {
         this.mailSender = mailSender;
         this.username = username;
     }
