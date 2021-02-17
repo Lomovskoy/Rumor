@@ -45,7 +45,6 @@ public class FileServiceS3Impl implements FileService {
         }
     }
 
-    @Async
     @Override
     public S3ObjectInputStream getFile(String fileName) {
         return filePlugin.getFile(fileName);
