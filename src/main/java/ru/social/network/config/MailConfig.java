@@ -21,8 +21,8 @@ public class MailConfig {
     private final String protocol;
     private final String debug;
 
-    public MailConfig(@Value("${spring.mail.host}") String host, @Value("${spring.mail.username}") String username,
-                      @Value("${spring.mail.password}") String password, @Value("${spring.mail.port}") int port,
+    public MailConfig(@Value("${spring.mail.host}") String host, @Value("${mail.username}") String username,
+                      @Value("${mail.password}") String password, @Value("${spring.mail.port}") int port,
                       @Value("${spring.mail.protocol}") String protocol, @Value("${mail.debug}") String debug) {
         this.host = host;
         this.username = username;
