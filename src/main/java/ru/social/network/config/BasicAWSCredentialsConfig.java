@@ -19,7 +19,7 @@ public class BasicAWSCredentialsConfig {
 
     public BasicAWSCredentialsConfig(@Value("${aws.access.key}") String accessKey,
                                      @Value("${aws.secret.key}") String secretKey) {
-        LOG.info("AWSCredentialsConfig: accessKey={} secretKey{}", accessKey, secretKey);
+        LOG.info("AWSCredentialsConfig: accessKey={} secretKey={}", accessKey, secretKey);
         this.accessKey = accessKey;
         this.secretKey = secretKey;
     }
