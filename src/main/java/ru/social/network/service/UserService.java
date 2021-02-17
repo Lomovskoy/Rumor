@@ -1,9 +1,6 @@
 package ru.social.network.service;
 
-import org.springframework.ui.Model;
 import ru.social.network.model.User;
-import ru.social.network.model.dto.CaptchaResponseDto;
-
 import java.util.List;
 import java.util.Map;
 

@@ -5,12 +5,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
+import org.springframework.transaction.annotation.Transactional;
 import ru.social.network.enums.Role;
-import ru.social.network.mapings.ErrorMessage;
-import ru.social.network.mapings.ViewVariables;
 import ru.social.network.model.User;
-import ru.social.network.model.dto.CaptchaResponseDto;
 import ru.social.network.repository.UserRepository;
 import ru.social.network.service.MessageService;
 import ru.social.network.service.UserService;
@@ -39,6 +36,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     }
 
     @Override
+    @Transactional
     public boolean addUser(User user) {
         var userFromDb = userRepository.findByUsername(user.getUsername());
 
@@ -48,9 +46,8 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         user.setRoles(Collections.singleton(Role.USER));
         user.setActivationCode(UUID.randomUUID().toString());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-
-        userRepository.save(user);
         messageService.sendMessage(user);
+        userRepository.save(user);
         return true;
     }
 
@@ -90,6 +87,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     }
 
     @Override
+    @Transactional
     public void updateProfile(User user, String password, String email) {
         var userEmail = user.getEmail();
 
@@ -108,11 +106,10 @@ public class UserServiceImpl implements UserDetailsService, UserService {
             user.setPassword(password);
         }
 
-        userRepository.save(user);
-
         if (isEmailChanged) {
             messageService.sendMessage(user);
         }
+        userRepository.save(user);
     }
 
     @Override
