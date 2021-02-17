@@ -1,6 +1,7 @@
 package ru.social.network.service;
 
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.multipart.MultipartFile;
 import ru.social.network.model.Message;
 
@@ -8,6 +9,7 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.UUID;
 
+@EnableAsync
 public interface FileService {
 
     default boolean checkFile(MultipartFile file) {

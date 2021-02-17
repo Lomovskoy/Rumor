@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import ru.social.network.model.Message;
@@ -28,6 +29,7 @@ public class FileServiceS3Impl implements FileService {
         this.uploadPath = uploadPath;
     }
 
+    @Async
     @Override
     public void saveFile(Message message, MultipartFile multipartFile) throws IOException {
         LOG.info("saveFile: run");
