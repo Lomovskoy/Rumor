@@ -25,7 +25,7 @@
             <div class="form-group">
                 <div class="custom-file">
                     <input type="file" name="file" id="customFile" multiple accept="image/*,image/jpeg"/>
-                    <label class="custom-file-label" for="customFile">Файл должен быть не более 1MB и иметь расширение .png, .jpg, .jpeg</label>
+                    <label class="custom-file-label" for="customFile">Максимальный размер 1MB .png .jpg</label>
                 </div>
             </div>
             <input type="hidden" name="_csrf" value="${_csrf.token}" />

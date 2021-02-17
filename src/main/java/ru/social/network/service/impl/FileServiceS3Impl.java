@@ -40,8 +40,6 @@ public class FileServiceS3Impl implements FileService {
             } else {
                 throw new ValidationException("Файл не может быть с расширением " + multipartFile.getContentType());
             }
-        } else {
-            throw new ValidationException("Файл пустой или без имени.");
         }
     }
 

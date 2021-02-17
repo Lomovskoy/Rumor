@@ -15,8 +15,7 @@ public interface FileService {
     }
 
     default boolean checkContentType(MultipartFile file) {
-        return Objects.equals(file.getContentType(), ".png") || Objects.equals(file.getContentType(), ".jpg")
-                || Objects.equals(file.getContentType(), ".jpeg");
+        return Objects.equals(file.getContentType(), "image/png") || Objects.equals(file.getContentType(), "image/jpeg");
     }
 
     default String getResultFilename(MultipartFile multipartFile) {
