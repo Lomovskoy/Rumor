@@ -29,8 +29,8 @@ public class MessageServiceImpl implements MessageService {
     public void sendMessage(User user) {
         if (!user.getEmail().isEmpty()) {
             var message = String.format(
-                    "Привет, %s! \nДобро пожаловать в Rumor. " +
-                            "Для активации аккаунта, перейдите по следующей ссылке : http://%s/activate/%s",
+                    "Привет, %s! \nЭто письмо активации аккаунта в Rumor. " +
+                            "Перейдите по следующей ссылке : http://%s/activate/%s \n для активации",
                     user.getUsername(),
                     hostname,
                     user.getActivationCode()
